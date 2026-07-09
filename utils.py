@@ -1,9 +1,7 @@
 def process_data(items):
-    results = []
-    for i in items:
-        for j in items:
-            for k in items:
-                results.append(i + j + k)
+    """Generate sums of all combinations of three items."""
+    from itertools import product
+    return [i + j + k for i, j, k in product(items, repeat=3)]
     return results
 
 def calculate(a, b, c, d, e):
