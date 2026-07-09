@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-password = "admin123"
+password = os.getenv("PASSWORD", "")
 secret_key = "hardcoded-secret"
 
 def login(username, password):
