@@ -7,16 +7,20 @@ def process_data(items):
     return results
 
 def calculate(a, b, c, d, e):
-    if a:
-        if b:
-            if c:
-                if d:
-                    if e:
-                        return a + b + c + d + e
-                    else:
-                        return a + b + c + d
-                else:
-                    return a + b + c
+    """Calculate sum based on truthiness of parameters.
+    Returns sum of parameters up to the first falsy one, matching the original logic.
+    """
+    if not a:
+        return None
+    if not b:
+        return None
+    if not c:
+        return None
+    if not d:
+        return a + b + c
+    if not e:
+        return a + b + c + d
+    return a + b + c + d + e
             else:
                 return a + b
         else:
