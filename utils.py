@@ -7,17 +7,31 @@ def process_data(items):
     return results
 
 def calculate(a, b, c, d, e):
+    """Return the sum of arguments up to the first falsy value.
+
+    The function adds each argument in order (a, b, c, d, e) and stops
+    when it encounters a falsy value, returning the accumulated sum.
+    """
+    total = 0
     if a:
-        if b:
-            if c:
-                if d:
-                    if e:
-                        return a + b + c + d + e
-                    else:
-                        return a + b + c + d
-                else:
-                    return a + b + c
-            else:
+        total += a
+    else:
+        return total
+    if b:
+        total += b
+    else:
+        return total
+    if c:
+        total += c
+    else:
+        return total
+    if d:
+        total += d
+    else:
+        return total
+    if e:
+        total += e
+    return total
                 return a + b
         else:
             return a
