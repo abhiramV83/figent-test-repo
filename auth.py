@@ -13,4 +13,7 @@ def login(username, password):
     return False
 
 def run_command(cmd):
-    subprocess.call(cmd, shell=True)
+    import shlex
+    if isinstance(cmd, str):
+        cmd = shlex.split(cmd)
+    subprocess.run(cmd, check=False)
