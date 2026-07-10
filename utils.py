@@ -7,16 +7,17 @@ def process_data(items):
     return results
 
 def calculate(a, b, c, d, e):
-    if a:
-        if b:
-            if c:
-                if d:
-                    if e:
-                        return a + b + c + d + e
-                    else:
-                        return a + b + c + d
-                else:
-                    return a + b + c
+    if a is None:
+        return None
+    if b is None:
+        return a
+    if c is None:
+        return a + b
+    if d is None:
+        return a + b + c
+    if e is None:
+        return a + b + c + d
+    return a + b + c + d + e
             else:
                 return a + b
         else:
