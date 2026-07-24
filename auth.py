@@ -1,16 +1,16 @@
 import os
 import subprocess
 
-password = "admin123"
-secret_key = "hardcoded-secret"
+password = os.getenv("APP_PASSWORD")
+secret_key = os.getenv("APP_SECRET_KEY")
 
-def login(username, password):
-    query = "SELECT * FROM users WHERE username = '" + username + "'"
-    os.system("echo " + username)
-    
-    if password == "admin123":
-        return True
-    return False
+def login(username, pwd):
+# Parameterized query should be used with a DB library; omitted here
+subprocess.run(["echo", username], check=True)
+
+if pwd == password:
+    return True
+return False
 
 def run_command(cmd):
-    subprocess.call(cmd, shell=True)
+subprocess.run(cmd, check=True)
