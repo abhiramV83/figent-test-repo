@@ -7,17 +7,9 @@ def process_data(items):
     return results
 
 def calculate(a, b, c, d, e):
-    if a:
-        if b:
-            if c:
-                if d:
-                    if e:
-                        return a + b + c + d + e
-                    else:
-                        return a + b + c + d
-                else:
-                    return a + b + c
-            else:
+    """Calculate the sum of provided numeric arguments, treating None as zero.
+    Zero values are included in the sum."""
+    return sum(x for x in (a, b, c, d, e) if x is not None)
                 return a + b
         else:
             return a
