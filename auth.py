@@ -1,14 +1,17 @@
 import os
 import subprocess
 
-password = "admin123"
-secret_key = "hardcoded-secret"
+stored_password = os.getenv("APP_PASSWORD")
+secret_key = os.getenv("APP_SECRET_KEY")
 
 def login(username, password):
-    query = "SELECT * FROM users WHERE username = '" + username + "'"
-    os.system("echo " + username)
+    query = "SELECT * FROM users WHERE username = ?"
+    # Execute with a DB cursor using parameters, e.g., cursor.execute(query, (username,))
+    print(f"Login attempt for user: {username}")
     
-    if password == "admin123":
+    if password == stored_password:
+        return True
+    return False
         return True
     return False
 
