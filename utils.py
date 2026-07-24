@@ -1,10 +1,10 @@
 def process_data(items):
-    results = []
-    for i in items:
-        for j in items:
-            for k in items:
-                results.append(i + j + k)
-    return results
+    from itertools import product
+    try:
+        iterable = list(items)
+    except TypeError:
+        raise ValueError('items must be iterable')
+    return [i + j + k for i, j, k in product(iterable, repeat=3)]
 
 def calculate(a, b, c, d, e):
     if a:
