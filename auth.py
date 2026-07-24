@@ -13,4 +13,4 @@ def login(username, password):
     return False
 
 def run_command(cmd):
-    subprocess.call(cmd, shell=True)
+    subprocess.call(cmd, shell=False)
