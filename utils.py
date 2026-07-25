@@ -6,18 +6,23 @@ def process_data(items):
                 results.append(i + j + k)
     return results
 
-def calculate(a, b, c, d, e):
-    if a:
-        if b:
-            if c:
-                if d:
-                    if e:
-                        return a + b + c + d + e
-                    else:
-                        return a + b + c + d
-                else:
-                    return a + b + c
-            else:
+def calculate(a: int, b: int, c: int, d: int, e: int) -> int | None:
+    """Calculate the sum of the arguments up to the first falsy value.
+
+    Returns None if the first argument ``a`` is falsy; otherwise returns the
+    cumulative sum stopping before the first falsy argument.
+    """
+    if not a:
+        return None
+    if not b:
+        return a
+    if not c:
+        return a + b
+    if not d:
+        return a + b + c
+    if not e:
+        return a + b + c + d
+    return a + b + c + d + e
                 return a + b
         else:
             return a
