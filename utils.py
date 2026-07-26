@@ -1,10 +1,9 @@
 def process_data(items):
-    results = []
-    for i in items:
-        for j in items:
-            for k in items:
-                results.append(i + j + k)
-    return results
+    """Generate sums of all possible triples from items."""
+    if not hasattr(items, "__iter__"):
+        raise TypeError("items must be an iterable of addable elements")
+    import itertools
+    return [i + j + k for i, j, k in itertools.product(items, repeat=3)]
 
 def calculate(a, b, c, d, e):
     if a:
