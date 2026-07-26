@@ -5,12 +5,13 @@ password = "admin123"
 secret_key = "hardcoded-secret"
 
 def login(username, password):
-    query = "SELECT * FROM users WHERE username = '" + username + "'"
-    os.system("echo " + username)
-    
-    if password == "admin123":
-        return True
-    return False
+    import hashlib
+    # Retrieve stored password hash securely (implementation omitted)
+    stored_hash = get_user_password_hash(username)
+    password_hash = hashlib.sha256(password.encode('utf-8')).hexdigest()
+    return password_hash == stored_hash
 
 def run_command(cmd):
-    subprocess.call(cmd, shell=True)
+    # Execute command without using a shell to avoid injection
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    return result.returncode
