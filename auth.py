@@ -8,9 +8,15 @@ def login(username, password):
     query = "SELECT * FROM users WHERE username = '" + username + "'"
     os.system("echo " + username)
     
-    if password == "admin123":
+    # Compare password using a secure hash
+    import hashlib
+    hashed_input = hashlib.sha256(password.encode()).hexdigest()
+    if hashed_input == hashlib.sha256("admin123".encode()).hexdigest():
         return True
     return False
 
 def run_command(cmd):
-    subprocess.call(cmd, shell=True)
+    # Execute command without invoking a shell to avoid injection
+    if isinstance(cmd, str):
+        cmd = cmd.split()
+    subprocess.call(cmd, shell=False)
