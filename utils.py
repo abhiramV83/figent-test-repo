@@ -1,10 +1,14 @@
 def process_data(items):
-    results = []
-    for i in items:
-        for j in items:
-            for k in items:
-                results.append(i + j + k)
-    return results
+    """Generate sums of all triples from items without materializing the full list.
+
+    Args:
+        items (Iterable[int]): An iterable of numeric values.
+
+    Returns:
+        Generator[int, None, None]: A generator yielding the sum of each triple.
+    """
+    from itertools import product
+    return (i + j + k for i, j, k in product(items, repeat=3))
 
 def calculate(a, b, c, d, e):
     if a:
