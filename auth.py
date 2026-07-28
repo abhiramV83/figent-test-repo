@@ -1,14 +1,16 @@
 import os
 import subprocess
 
-password = "admin123"
-secret_key = "hardcoded-secret"
+password = os.getenv("APP_PASSWORD")
+secret_key = os.getenv("APP_SECRET_KEY")
 
-def login(username, password):
-    query = "SELECT * FROM users WHERE username = '" + username + "'"
-    os.system("echo " + username)
-    
-    if password == "admin123":
+def login(username, pwd):
+    query = "SELECT * FROM users WHERE username = %s"
+    subprocess.run(["echo", username], capture_output=True)
+
+    if pwd == password:
+        return True
+    return False
         return True
     return False
 
