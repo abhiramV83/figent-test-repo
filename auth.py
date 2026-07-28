@@ -1,14 +1,16 @@
 import os
 import subprocess
 
-password = "admin123"
-secret_key = "hardcoded-secret"
+# Removed hardcoded credentials; use environment variables
 
-def login(username, password):
-    query = "SELECT * FROM users WHERE username = '" + username + "'"
-    os.system("echo " + username)
-    
-    if password == "admin123":
+def login(username, pwd):
+    # Use parameterized query to avoid SQL injection
+    query = "SELECT * FROM users WHERE username = %s"
+    # Password verification against environment variable
+    expected_pwd = os.getenv("APP_PASSWORD")
+    if expected_pwd is None:
+        return False
+    if pwd == expected_pwd:
         return True
     return False
 
