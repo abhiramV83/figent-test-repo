@@ -1,4 +1,13 @@
-def process_data(items):
+def process_data(items: list[int]) -> list[int]:
+    """Compute the sum of every combination of three items from the input list.
+
+    Args:
+        items: A list of numeric values.
+
+    Returns:
+        A list containing the sums of all possible triples (i, j, k) from ``items``.
+        Note: This operation has O(n³) time and memory complexity.
+    """
     results = []
     for i in items:
         for j in items:
