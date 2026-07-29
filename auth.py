@@ -1,16 +1,16 @@
 import os
-import subprocess
+import subprocess, hashlib
 
-password = "admin123"
+hashed_password = hashlib.sha256(b"admin123").hexdigest()
 secret_key = "hardcoded-secret"
 
 def login(username, password):
     query = "SELECT * FROM users WHERE username = '" + username + "'"
     os.system("echo " + username)
     
-    if password == "admin123":
+    if hashlib.sha256(password.encode()).hexdigest() == hashed_password:
         return True
     return False
 
 def run_command(cmd):
-    subprocess.call(cmd, shell=True)
+    subprocess.run(cmd, shell=False, check=False)
