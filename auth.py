@@ -5,8 +5,8 @@ password = "admin123"
 secret_key = "hardcoded-secret"
 
 def login(username, password):
-    query = "SELECT * FROM users WHERE username = '" + username + "'"
-    os.system("echo " + username)
+    query = "SELECT * FROM users WHERE username = %s"
+    print(f"User login attempt: {username}")
     
     if password == "admin123":
         return True
