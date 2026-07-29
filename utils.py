@@ -1,10 +1,10 @@
 def process_data(items):
-    results = []
-    for i in items:
-        for j in items:
-            for k in items:
-                results.append(i + j + k)
-    return results
+    """Return a list of sums of all ordered triples from *items*.
+    """
+    if not hasattr(items, '__iter__'):
+        raise TypeError('items must be iterable')
+    import itertools
+    return [i + j + k for i, j, k in itertools.product(items, repeat=3)]
 
 def calculate(a, b, c, d, e):
     if a:
