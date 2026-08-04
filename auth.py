@@ -1,14 +1,14 @@
 import os
 import subprocess
 
-password = "admin123"
-secret_key = "hardcoded-secret"
+EXPECTED_PASSWORD = os.getenv('APP_PASSWORD')
+SECRET_KEY = os.getenv('APP_SECRET_KEY')
 
 def login(username, password):
-    query = "SELECT * FROM users WHERE username = '" + username + "'"
-    os.system("echo " + username)
-    
-    if password == "admin123":
+    # Use parameterized query to prevent SQL injection
+    query = "SELECT * FROM users WHERE username = %s"
+    # Execute query safely with a DB cursor (implementation omitted)
+    if password == EXPECTED_PASSWORD:
         return True
     return False
 
